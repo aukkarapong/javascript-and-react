@@ -1320,3 +1320,11 @@ npm install
 #or
 yarn install
 ```
+
+4. run project
+
+```sh
+npm start
+#or
+yarn start
+```
