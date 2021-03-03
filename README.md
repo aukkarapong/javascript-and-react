@@ -1,4 +1,4 @@
-# ReactJS
+# JavaScript & ReactJS
 
 ## JavaScript มาตรฐาน ES6
 
@@ -1298,3 +1298,11 @@ isEven(4) // true
 #### **_Lodash_**
 
 เป็น library ช่วยในเรื่องการจัดการจิปาถะอย่าง กรองข้อมูล, เรียงลำดับ, หาค่ามาก ค่าน้อย, หา item จาก array หรือ object, เอาเฉพาะค่าแรก ค่าสุดท้าย และอื่น ๆ อีกมากมาย จะช่วยทุ่นเวลาไปได้มาก สามารถศึกษาเพิ่มเติมได้ที่ `https://lodash.com/docs/4.17.15`
+
+---
+
+## ReactJS
+
+ก่อนเข้าเนื้อหา React เรามาทำความรู้จักกับ UI Components ที่น้องเดียร์ `Thawatchai Kuansombat` React Master ของเราได้ทำไว้ให้เราใช้
+
+[React UI Components](https://glud-component.vercel.app/)
