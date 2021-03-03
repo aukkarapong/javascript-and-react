@@ -6,7 +6,7 @@ import styled from "@emotion/styled";
 import { getPostList } from "../actions/action";
 import { useStateLoading } from "../hooks";
 import Demo from "../components/Demo";
-// import history from "../utils/history";
+import history from "../utils/history";
 
 export default () => {
   const dispatch = useDispatch();
@@ -29,12 +29,19 @@ export default () => {
   //   history.push("/about");
   // };
 
+  const handleGotoAblutPageV1 = () => {
+    history.push("/about-v1");
+  };
+
   return (
     <Style>
       <Demo name="React" />
       <Button loading={loading.getPost} onClick={getPost}>
         Get Posts
       </Button>
+
+      <Button onClick={handleGotoAblutPageV1}>goto about page v1</Button>
+
       {/* <Button loading={loading.getPost} onClick={handleOnClickGotoAboutPageBTN}>
         Go to About Page
       </Button> */}
