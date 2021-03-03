@@ -1306,3 +1306,17 @@ isEven(4) // true
 ก่อนเข้าเนื้อหา React เรามาทำความรู้จักกับ UI Components ที่น้องเดียร์ `Thawatchai Kuansombat` React Master ของเราได้ทำไว้ให้เราใช้
 
 [React UI Components](https://glud-component.vercel.app/)
+
+---
+
+## React Template
+
+1. Download
+2. unzip
+3. install node module ด้วยคำสั่ง
+
+```sh
+npm install
+#or
+yarn install
+```
