@@ -13,11 +13,16 @@ import Button from "glud-component/lib/Button";
 
 import history from "../../utils/history";
 import aboutV1Module from "../../modules/about-v1";
+import validation from "../../utils/validation";
 
 export default () => {
   const dispatch = useDispatch();
 
   const firstname = useSelector((state) => state.aboutV1.firstname);
+  const lastname = useSelector((state) => state.aboutV1.lastname);
+  const email = useSelector((state) => state.aboutV1.email);
+  const phone = useSelector((state) => state.aboutV1.phone);
+  const message = useSelector((state) => state.aboutV1.message);
 
   useEffect(() => {}, []);
 
@@ -39,9 +44,50 @@ export default () => {
   const isErrorInputFirstnameMessage =
     firstname === "" ? "This field invalid" : "";
 
+  // input lastname
+  const isErrorInputLastname = lastname === "";
+  const isErrorInputLastnameMessage =
+    firstname === "" ? "This field invalid" : "";
+
+  // input email
+  const isErrorInputEmailRule = () => {
+    if (email === "") return true;
+    return !validation.isEmail(email);
+  };
+  const isErrorInputEmail = isErrorInputEmailRule();
+  const isErrorInputEmailMessageRule = () => {
+    if (email === "") return "This field invalid";
+    if (validation.isEmail(email) === false) return "invalid email";
+    return "";
+  };
+  const isErrorInputEmailMessage = isErrorInputEmailMessageRule();
+
+  // input phone
+  const isErrorInputPhoneRule = () => {
+    if (phone === "") return true;
+    return !validation.isThaiMobile(phone);
+  };
+  const isErrorInputPhone = isErrorInputPhoneRule();
+  const isErrorInputPhoneMessageRule = () => {
+    if (phone === "") return "This field invalid";
+    if (validation.isThaiMobile(phone) === false) return "invalid phone";
+    return "";
+  };
+  const isErrorInputPhoneMessage = isErrorInputPhoneMessageRule();
+
+  // input message
+  const isErrorInputMessage = message === "";
+  const isErrorInputMessageMessage = message === "" ? "This field invalid" : "";
+
   // button send
   const isDisabledSendBTNRule = () => {
     if (firstname === "") return true;
+    if (lastname === "") return true;
+    if (email === "") return true;
+    if (phone === "") return true;
+    if (message === "") return true;
+    if (validation.isEmail(email) === false) return true;
+    if (validation.isThaiMobile(phone) === false) return true;
     return false;
   };
   const isDisabledSendBTN = isDisabledSendBTNRule();
@@ -76,7 +122,16 @@ export default () => {
               <Input
                 label="Lastname"
                 placeholder="Text input"
-                message="This field invalid"
+                message={isErrorInputLastnameMessage}
+                isRequired
+                isError={isErrorInputLastname}
+                value={lastname}
+                onChange={(e) =>
+                  handleOnChangeInput({
+                    key: "lastname",
+                    value: e.target.value,
+                  })
+                }
               />
             </Column>
           </Row>
@@ -85,14 +140,32 @@ export default () => {
               <Input
                 label="Email"
                 placeholder="Text input"
-                message="This field invalid"
+                message={isErrorInputEmailMessage}
+                isRequired
+                isError={isErrorInputEmail}
+                value={email}
+                onChange={(e) =>
+                  handleOnChangeInput({
+                    key: "email",
+                    value: e.target.value,
+                  })
+                }
               />
             </Column>
             <Column D={6} M={12}>
               <Input
                 label="Phone"
                 placeholder="Text input"
-                message="This field invalid"
+                message={isErrorInputPhoneMessage}
+                isRequired
+                isError={isErrorInputPhone}
+                value={phone}
+                onChange={(e) =>
+                  handleOnChangeInput({
+                    key: "phone",
+                    value: e.target.value,
+                  })
+                }
               />
             </Column>
           </Row>
@@ -101,7 +174,16 @@ export default () => {
               <TextArea
                 label="Message"
                 placeholder="Text input"
-                message="This field invalid"
+                message={isErrorInputMessageMessage}
+                isRequired
+                isError={isErrorInputMessage}
+                value={message}
+                onChange={(e) =>
+                  handleOnChangeInput({
+                    key: "message",
+                    value: e.target.value,
+                  })
+                }
               />
             </Column>
           </Row>

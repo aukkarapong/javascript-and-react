@@ -2,6 +2,10 @@ import { createModule } from "redux-modux";
 
 const initialState = {
   firstname: "",
+  lastname: "",
+  email: "",
+  phone: "",
+  message: "",
 };
 
 const setPosts = (state, action) => ({
