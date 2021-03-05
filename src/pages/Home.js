@@ -33,6 +33,10 @@ export default () => {
     history.push("/about-v1");
   };
 
+  const handleGotoAblutPageV2 = () => {
+    history.push("/about-v2");
+  };
+
   return (
     <Style>
       <Demo name="React" />
@@ -41,6 +45,7 @@ export default () => {
       </Button>
 
       <Button onClick={handleGotoAblutPageV1}>goto about page v1</Button>
+      <Button onClick={handleGotoAblutPageV2}>goto about page v2</Button>
 
       {/* <Button loading={loading.getPost} onClick={handleOnClickGotoAboutPageBTN}>
         Go to About Page
