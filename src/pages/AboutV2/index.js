@@ -7,13 +7,9 @@ import Box from "glud-component/lib/Box";
 import Row from "glud-component/lib/Row";
 import Column from "glud-component/lib/Column";
 import Title from "glud-component/lib/Title";
-import Input from "glud-component/lib/Input";
-import TextArea from "glud-component/lib/TextArea";
 import Button from "glud-component/lib/Button";
 
 import history from "../../utils/history";
-import aboutV1Module from "../../modules/about-v1";
-import validation from "../../utils/validation";
 
 import { useReduxFormCC } from "redux-form-cc";
 import formElement from "./formElement";
@@ -21,27 +17,12 @@ import formElement from "./formElement";
 export default () => {
   const dispatch = useDispatch();
 
-  const firstname = useSelector((state) => state.aboutV1.firstname);
-  const lastname = useSelector((state) => state.aboutV1.lastname);
-  const email = useSelector((state) => state.aboutV1.email);
-  const phone = useSelector((state) => state.aboutV1.phone);
-  const message = useSelector((state) => state.aboutV1.message);
-
   useEffect(() => {}, []);
 
   const { form, firstError } = useReduxFormCC(formElement.options);
 
   const gotoHomePage = () => {
     history.push("/");
-  };
-
-  const handleOnChangeInput = ({ key, value }) => {
-    dispatch(
-      aboutV1Module.set({
-        key,
-        value,
-      })
-    );
   };
 
   return (
