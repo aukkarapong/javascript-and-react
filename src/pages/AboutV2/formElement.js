@@ -19,6 +19,21 @@ const formData = (state) => {
         },
       ],
     },
+    lastname: {
+      name: "lastname",
+      type: "input",
+      label: "Lastname",
+      placeholder: "- Please Enter -",
+      value: state.about.lastname,
+      disabled: false,
+      isRequired: true,
+      rules: [
+        {
+          message: "ระบุข้อมูล",
+          rule: (value) => value !== "",
+        },
+      ],
+    },
     email: {
       name: "email",
       type: "input",
@@ -38,11 +53,45 @@ const formData = (state) => {
         },
       ],
     },
+    phone: {
+      name: "phone",
+      type: "input",
+      label: "Phone",
+      placeholder: "- Please Enter -",
+      value: state.about.phone,
+      disabled: false,
+      isRequired: true,
+      rules: [
+        {
+          message: "ระบุข้อมูล",
+          rule: (value) => value !== "",
+        },
+        {
+          message: "หมายเลขโทรศัพท์ไม่ถูกต้อง",
+          rule: (value) => validation.isThaiMobile(value),
+        },
+      ],
+    },
+    message: {
+      name: "message",
+      type: "textarea",
+      label: "Message",
+      placeholder: "- Please Enter -",
+      value: state.about.message,
+      disabled: false,
+      isRequired: true,
+      rules: [
+        {
+          message: "ระบุข้อมูล",
+          rule: (value) => value !== "",
+        },
+      ],
+    },
   };
   return Object.assign(theForm);
 };
 
-const inputOnlyNumberField = ["firstname"];
+const inputOnlyNumberField = ["phone"];
 
 const action = ({ key, value }) => (dispatch, getState) => {
   if (inputOnlyNumberField.includes(key)) {

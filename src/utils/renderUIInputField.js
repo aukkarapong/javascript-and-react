@@ -1,10 +1,12 @@
 import React from "react";
 
-import { InputText } from "../components";
+import { InputText, InputTextArea } from "../components";
 
 const renderUIInputField = (fieldData, onChange) => {
-  if (fieldData.type === "text")
+  if (fieldData.type === "input")
     return <InputText data={fieldData} onChange={onChange} />;
+  if (fieldData.type === "textarea")
+    return <InputTextArea data={fieldData} onChange={onChange} />;
 
   return <InputText data={fieldData} onChange={onChange} />;
   /* switch (fieldData.type) {

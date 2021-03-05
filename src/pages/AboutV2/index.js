@@ -44,41 +44,6 @@ export default () => {
     );
   };
 
-  // input lastname
-  const isErrorInputLastname = lastname === "";
-  const isErrorInputLastnameMessage =
-    firstname === "" ? "This field invalid" : "";
-
-  // input phone
-  const isErrorInputPhoneRule = () => {
-    if (phone === "") return true;
-    return !validation.isThaiMobile(phone);
-  };
-  const isErrorInputPhone = isErrorInputPhoneRule();
-  const isErrorInputPhoneMessageRule = () => {
-    if (phone === "") return "This field invalid";
-    if (validation.isThaiMobile(phone) === false) return "invalid phone";
-    return "";
-  };
-  const isErrorInputPhoneMessage = isErrorInputPhoneMessageRule();
-
-  // input message
-  const isErrorInputMessage = message === "";
-  const isErrorInputMessageMessage = message === "" ? "This field invalid" : "";
-
-  // button send
-  const isDisabledSendBTNRule = () => {
-    if (firstname === "") return true;
-    if (lastname === "") return true;
-    if (email === "") return true;
-    if (phone === "") return true;
-    if (message === "") return true;
-    if (validation.isEmail(email) === false) return true;
-    if (validation.isThaiMobile(phone) === false) return true;
-    return false;
-  };
-  const isDisabledSendBTN = isDisabledSendBTNRule();
-
   return (
     <Style>
       <Container>
@@ -93,20 +58,7 @@ export default () => {
               {form.firstname}
             </Column>
             <Column D={6} M={12}>
-              <Input
-                label="Lastname"
-                placeholder="Text input"
-                message={isErrorInputLastnameMessage}
-                isRequired
-                isError={isErrorInputLastname}
-                value={lastname}
-                onChange={(e) =>
-                  handleOnChangeInput({
-                    key: "lastname",
-                    value: e.target.value,
-                  })
-                }
-              />
+              {form.lastname}
             </Column>
           </Row>
           <Row>
@@ -114,38 +66,12 @@ export default () => {
               {form.email}
             </Column>
             <Column D={6} M={12}>
-              <Input
-                label="Phone"
-                placeholder="Text input"
-                message={isErrorInputPhoneMessage}
-                isRequired
-                isError={isErrorInputPhone}
-                value={phone}
-                onChange={(e) =>
-                  handleOnChangeInput({
-                    key: "phone",
-                    value: e.target.value,
-                  })
-                }
-              />
+              {form.phone}
             </Column>
           </Row>
           <Row>
             <Column D={12} M={12}>
-              <TextArea
-                label="Message"
-                placeholder="Text input"
-                message={isErrorInputMessageMessage}
-                isRequired
-                isError={isErrorInputMessage}
-                value={message}
-                onChange={(e) =>
-                  handleOnChangeInput({
-                    key: "message",
-                    value: e.target.value,
-                  })
-                }
-              />
+              {form.message}
             </Column>
           </Row>
           <Row className="padding-top-20" justified>
@@ -155,7 +81,7 @@ export default () => {
               </Button>
             </Column>
             <Column D={3} M={6}>
-              <Button primary fullwidth disabled={isDisabledSendBTN}>
+              <Button primary fullwidth disabled={firstError !== ""}>
                 Send
               </Button>
             </Column>
