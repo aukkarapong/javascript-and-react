@@ -1,7 +1,6 @@
 import renderUIInputField from "../../utils/renderUIInputField";
 import aboutModule from "../../modules/about";
 import validation from "../../utils/validation";
-// import setDateValue from "../../../utils/setDateValue";
 
 const formData = (state) => {
   let theForm = {
