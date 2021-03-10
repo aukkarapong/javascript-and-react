@@ -1,15 +1,16 @@
 import { createActionWithFetching } from "../utils";
-import { fetchPostList } from "../api/fetchers";
-import post from "../modules/post";
+import { fetchUsers } from "../api/users";
+import aboutModule from "../modules/about";
 
-const getPostList = () => {
+const getUsers = () => {
   const callAction = async (dispatch) => {
     const params = {};
-    const { data } = await fetchPostList(params);
+    const { data } = await fetchUsers(params);
 
     dispatch(
-      post.setPosts({
-        list: data,
+      aboutModule.set({
+        key: "users",
+        value: data,
       })
     );
   };
@@ -21,4 +22,4 @@ const getPostList = () => {
   });
 };
 
-export { getPostList };
+export { getUsers };

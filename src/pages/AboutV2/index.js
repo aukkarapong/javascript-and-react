@@ -13,11 +13,15 @@ import history from "../../utils/history";
 
 import { useReduxFormCC } from "redux-form-cc";
 import formElement from "./formElement";
+import { getUsers } from "../../actions/users";
 
 export default () => {
   const dispatch = useDispatch();
 
-  useEffect(() => {}, []);
+  useEffect(() => {
+    dispatch(getUsers());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const { form, firstError } = useReduxFormCC(formElement.options);
 

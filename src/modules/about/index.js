@@ -6,6 +6,7 @@ const initialState = {
   email: "",
   phone: "",
   message: "",
+  users: [],
 };
 
 const setPosts = (state, action) => ({
